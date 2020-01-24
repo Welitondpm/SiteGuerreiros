@@ -1,5 +1,5 @@
 # SiteGuerreiros
-Repositório pra criação do site pro cã guerreiros.
+Repositório pra criação do site pro clã guerreiros.
 
 Um site simples com algumas funcionalidades,
 API do Clash of Clans
