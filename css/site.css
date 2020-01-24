@@ -1,0 +1,64 @@
+@media (max-width:728px) {
+       .video-sobre {
+             position: relative;
+             padding-bottom: 56.25%; /* 16:9 */
+             padding-top: 25px;
+             height: 0;
+         }
+
+       .video-sobre iframe {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+        }
+}
+
+/*.video-responsive{
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	position: relative;
+	height: 0;
+	margin: 0px 0px
+}
+
+.video-responsive iframe{
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+*/
+
+.linha{
+	margin: 10px 0px 0px 0px;
+	padding: 5px 5px 5px;
+}
+
+.titulo{
+	color: blue;
+	text-shadow: 1px 1px black;
+	font-size: 60px;
+}
+
+.caixatexto{
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 20px;
+	line-height: 33px;
+}
+
+footer{
+	color: white;
+}
+
+.footertexto{
+	font-size: 10px;
+	padding-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 14px;
+}
