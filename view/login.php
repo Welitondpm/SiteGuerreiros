@@ -1,6 +1,7 @@
 <?php
 
     $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
+    $registro = isset($_GET['registro']) ? $_GET['registro'] : 0;
 
 ?>
 
@@ -95,6 +96,10 @@
 
                                 if ($erro == 1) {
                                     echo "Usuário ou senha incorretos";
+                                }
+
+                                if ($registro == 1) {
+                                    echo "Usuário registrado com sucesso";
                                 }
 
                             ?>

@@ -1,3 +1,10 @@
+<?php
+
+    $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
+    $membroexiste = isset($_GET['membro']) ? $_GET['membro'] : 1;
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -116,6 +123,28 @@
                     <div class="form-group">
                         <label for="senhaconfirma">Confirme sua senha:</label>
                         <input type="password" name="senhaconfirma" id="senhaconfirma" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        
+                        <p style="color: red;">
+                            
+                            <?php
+
+                                if ($erro == 1) {
+                                    echo "Email já cadastrado escolha outro email!";
+                                } elseif ($erro == 2) {
+                                    echo "O jogador escolhido ( TAG ) já está cadastrado!";
+                                }
+
+                                if ($membroexiste == 0) {
+                                    echo "Verifique se a tag está escrita exatamente igual no jogo (Diferencia letras maiúsculas de minuscúlas) ou o jogador não pertence ao clã!";
+                                }
+
+                            ?>
+
+                        </p>
+
                     </div>
 
                     <div class="col-md-12 text-center">
