@@ -1,3 +1,9 @@
+<?php
+
+    $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/site.css">
+    <script type="text/javascript" src="../js/site.js"></script>
     <title>Clã Guerreiros</title>
 </head>
 <body>
@@ -63,7 +70,7 @@
             
             <div class="col-xs-12 col-sm-12">
                 
-                <form method="POST" action="php/login.php" class="col-lg-6 offset-lg-3">
+                <form method="POST" action="../php/login.php" class="col-lg-6 offset-lg-3">
 
                     <div class="form-group">
                         <label for="email">Email:</label>
@@ -72,12 +79,33 @@
                     
                     <div class="form-group">
                         <label for="senha">Senha:</label>
-                        <input type="email" name="senha" id="senha" class="form-control">
+                        <input type="password" name="senha" id="senha" class="form-control">
+                    </div>
+
+                    <div class="text-right">
+                        <a href="">Esqueceu a senha?</a>
+                        <br><br>
                     </div>
 
                     <div class="col-md-12 text-center">
                         
-                        <button type="submit" class="btn btn-secondary">
+                        <p style="color: red;">
+                            
+                            <?php
+
+                                if ($erro == 1) {
+                                    echo "Usuário ou senha incorretos";
+                                }
+
+                            ?>
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        
+                        <button type="submit" class="btn btn-secondary" onclick="return verificalogin();">
                             Logar
                         </button>
 
@@ -119,14 +147,6 @@
     		</div>
 
     	</div>
-
-        <div class="row">
-            
-            <div class="col-md-12 text-center">
-                &copy; Copyright Clã Guerreiros
-            </div>
-
-        </div>
 
     </footer>
 

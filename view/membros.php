@@ -57,7 +57,7 @@
 
             $clantag = "#28GPGRGGV";
 
-            $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjgyODNiYzhhLWEzMzktNGMxNS04OTFjLTE4YzU0MTQ3MmI1OCIsImlhdCI6MTU3OTkxNDcwOCwic3ViIjoiZGV2ZWxvcGVyLzliYTc4NTExLWU4ZmMtYmViMS0xYzZhLWYyYmY1MzYzYzFmZSIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjEzMS4yNTUuMTMyLjE0NyJdLCJ0eXBlIjoiY2xpZW50In1dfQ.fsvNOJohaejBk1v9iuhSjCFvT49qNwsmOw3VcdzuXIndpIiAV8aqYQm8-j7agcTndbqH_uzlMfXrKlVA28AVtg";
+            $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6Ijk2MmYyNjAxLTIxNWMtNDBhYi05N2I0LTZjYWY4ZjY2OTAxYiIsImlhdCI6MTU4MDkyMjA5OSwic3ViIjoiZGV2ZWxvcGVyLzliYTc4NTExLWU4ZmMtYmViMS0xYzZhLWYyYmY1MzYzYzFmZSIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjE2OC4xOTUuMjMwLjE1NyIsIjEzMS4yNTUuMTMyLjE0MSIsIjEzMS4yNTUuMTMyLjE0NyIsIjE2OC4xOTUuMjMwLjE1NiIsIjE2OC4xOTUuMjMwLjE1OCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.dQ-Tn83STGlrCxHau0GSCbw6PlGLD5mK4OtntZsNc-FV0bX_ZWgK3eKJJJm7UNgvcNMkK5TQP6dPAY6GXsb4Iw";
 
             $url = "https://api.clashofclans.com/v1/clans/" . urlencode($clantag);
 
@@ -116,7 +116,16 @@
                         <br>
                         Localização: <?php echo $data["location"]["name"]; ?>
                         <br>
-                        Tipo: <?php echo $data["type"]; ?>
+                        Tipo:
+                        <?php 
+                            if ($data["type"] == "inviteOnly") {
+                                echo "Somente convidados";
+                            } elseif ($data["type"] == "closed") {
+                                echo "Fechado";
+                            } else {
+                                echo "Aberto";
+                            }
+                        ?>
                         <br>
                         Troféus necessários: 
                         <img src="../img/principaltrofel.png" width="15px" height="20px">
@@ -126,7 +135,14 @@
                 </tr>
                 <tr class="row table-bordered">
                     <td colspan="3" class="col-sm-12 text-center">
-                        Fequência: <?php echo $data["warFrequency"]; ?>,
+                        Fequência: 
+                        <?php
+                            if ($data["warFrequency"] == "always") {
+                                echo "Sempre";
+                            } else {
+                                echo $data["warFrequency"];
+                            }
+                        ?>,
                         Vitórias: <?php echo $data["warWins"]; ?>,
                         Empates: <?php echo $data["warTies"]; ?>,
                         Derrotas: <?php echo $data["warLosses"]; ?>,
@@ -182,7 +198,17 @@
                         <?php echo $member["expLevel"]; ?>
                     </td>
                     <td>
-                        <?php echo "<b>", $member["name"], "</b><br/>", $member["role"]; ?>
+                        <?php echo "<b>", $member["name"], "</b><br/>"; 
+                            if ($member["role"] == "member") {
+                                echo "Membro";
+                            } elseif ($member["role"] == "admin") {
+                                echo "Ançião";
+                            } elseif ($member["role"] == "coLeader") {
+                                echo "Colíder";
+                            } else {
+                                echo "Líder";
+                            }
+                        ?>
                     </td>
                     <td>
                         <?php echo $member["donations"]; ?>
@@ -233,14 +259,6 @@
     		</div>
 
     	</div>
-
-        <div class="row">
-            
-            <div class="col-md-12 text-center">
-                &copy; Copyright Clã Guerreiros
-            </div>
-
-        </div>
 
     </footer>
 
