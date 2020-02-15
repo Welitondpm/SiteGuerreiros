@@ -1,3 +1,15 @@
+<?php
+
+    session_start();
+
+    if (!isset($_SESSION['email'])) {
+        $menu = 1;
+    } else {
+        $menu = 0;
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,6 +19,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/site.css">
     <title>Clã Guerreiros</title>
+    <link rel="shortcut icon" href="../img/favicon.ico">
 </head>
 <body>
 
@@ -14,7 +27,9 @@
 
 		<div class="container">
 
-    		<a href="index.html" class="navbar-brand abs">LOGO</a>
+    		<a href="index.php" class="navbar-brand abs">
+				<img src="../img/logo.png" alt="LOGO" height="42.4px" width="200px">
+			</a>
     		<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#barra-navegacao">
 
         		<span class="navbar-toggler-icon"></span>
@@ -26,20 +41,34 @@
 	    		<ul class="navbar-nav  ml-auto">
 	    			
 	    			<li class="nav-item">
-	    				<a href="index.html" class="nav-link">Home</a>
+	    				<a href="index.php" class="nav-link">Home</a>
 	    			</li>
 	    			<li class="nav-item active">
-	    				<a href="membros.html" class="nav-link">Membros</a>
+	    				<a href="membros.php" class="nav-link">Membros</a>
 	    			</li>
 	    			<li class="nav-item">
-	    				<a href="youtube.html" class="nav-link">Youtube</a>
+	    				<a href="youtube.php" class="nav-link">Youtube</a>
 	    			</li>
-	    			<li class="nav-item">
-	    				<a href="registro.php" class="nav-link">Registre-se</a>
-	    			</li>
-	    			<li class="nav-item">
-	    				<a href="login.php" class="nav-link">Login</a>
-	    			</li>
+	    			<?php
+                        if ($menu == 1) {
+                            echo '<li class="nav-item">
+                                    <a href="registro.php" class="nav-link">Registre-se</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="login.php" class="nav-link">Login</a>
+                                </li>';
+                        } else {
+                            echo '<li class="nav-item">
+									<a href="../autenticado/layout.php" class="nav-link">Layouts</a>
+								</li>
+								<li class="nav-item">
+									<a href="../autenticado/perfil.php" class="nav-link">Perfil</a>
+								</li>
+								<li class="nav-item">
+                                    <a href="../autenticado/sair.php" class="nav-link">Log-Out</a>
+                                </li>';
+                        }
+                    ?>
 	    			
 	    		</ul>
 

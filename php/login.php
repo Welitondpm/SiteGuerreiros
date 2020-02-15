@@ -20,7 +20,8 @@
 
 		if (isset($dados_usuario['email'])) {
 			$_SESSION['email'] = $dados_usuario['email'];
-			header('Location: ../autenticado/index.php');
+			$_SESSION['tag'] = $dados_usuario['tag'];
+			header('Location: ../autenticado/perfil.php');
 		} else {
 			header('Location: ../view/login.php?erro=1');
 		}

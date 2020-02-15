@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../css/site.css">
     <script type="text/javascript" src="../js/site.js"></script>
     <title>Clã Guerreiros</title>
+    <link rel="shortcut icon" href="../img/favicon.ico">
 </head>
 <body>
 
@@ -22,7 +23,9 @@
 
 		<div class="container">
 
-    		<a href="index.html" class="navbar-brand abs">LOGO</a>
+    		<a href="index.php" class="navbar-brand abs">
+				<img src="../img/logo.png" alt="LOGO" height="42.4px" width="200px">
+			</a>
     		<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#barra-navegacao">
 
         		<span class="navbar-toggler-icon"></span>
@@ -34,13 +37,13 @@
 	    		<ul class="navbar-nav  ml-auto">
 	    			
 	    			<li class="nav-item">
-	    				<a href="index.html" class="nav-link">Home</a>
+	    				<a href="index.php" class="nav-link">Home</a>
 	    			</li>
 	    			<li class="nav-item">
 	    				<a href="membros.php" class="nav-link">Membros</a>
 	    			</li>
 	    			<li class="nav-item">
-	    				<a href="youtube.html" class="nav-link">Youtube</a>
+	    				<a href="youtube.php" class="nav-link">Youtube</a>
 	    			</li>
 	    			<li class="nav-item active">
 	    				<a href="registro.php" class="nav-link">Registre-se</a>

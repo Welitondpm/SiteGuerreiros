@@ -6,6 +6,8 @@
         header('Location: ../view/login.php?erro=1');
     }
 
+    $aviso = 1;
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +19,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/site.css">
     <link rel="stylesheet" type="text/css" href="../css/updatstyle.css">
+    <script src="../js/verificapostlayout.js"></script>
     <title>Clã Guerreiros</title>
+    <link rel="shortcut icon" href="../img/favicon.ico">
 </head>
 <body>
 
@@ -25,7 +29,9 @@
 
         <div class="container">
 
-            <a href="index.html" class="navbar-brand abs">LOGO</a>
+            <a href="index.php" class="navbar-brand abs">
+				<img src="../img/logo.png" alt="LOGO" height="42.4px" width="200px">
+			</a>
             <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#barra-navegacao">
 
                 <span class="navbar-toggler-icon"></span>
@@ -36,14 +42,23 @@
                 
                 <ul class="navbar-nav  ml-auto">
                     
+                    <li class="nav-item">
+                        <a href="../view/index.php" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../view/membros.php" class="nav-link">Membros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../view/youtube.php" class="nav-link">Youtube</a>
+                    </li>
                     <li class="nav-item active">
-                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="layout.php" class="nav-link">Layouts</a>
                     </li>
                     <li class="nav-item">
-                        <a href="membros.php" class="nav-link">Membros</a>
+                        <a href="perfil.php" class="nav-link">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a href="youtube.html" class="nav-link">Youtube</a>
+                        <a href="sair.php" class="nav-link">Log-Out</a>
                     </li>
                     
                 </ul>
@@ -56,53 +71,68 @@
 
     <div class="container">
 
-        <div class="row linha">
-            <div class="col-sm-12 text-center">
-                <h1 class="titulo">Layouts</h1>
-            </div>          
-        </div>
-
-        <div class="col-sm-12 postar">
-
-            <div class="row">
+        <?php 
+        
+            if ($aviso == 1) {
+                echo '<br><div class="alert alert-danger col-12">Nenhuma funcionalidade está disponível no momento</div>';
+            } else {
+                echo '<div class="row linha">
+                            <div class="col-sm-12 text-center">
+                                <h1 class="titulo">Layouts</h1>
+                            </div>          
+                        </div>
                 
-                <div class="col-md-8 bordaclass">
-                    
-                    <textarea rows="5" class="form-control">Descrição</textarea>
-
-                </div>
-
-                <div class="col-md-4 bordaclass">
-                    
-                    <div id='outputImage'></div>
-
-                </div>
-
-            </div>
-
-            <div class="row uploadclass">
+                        <div class="col-sm-12 postar">
                 
-                <div class="col-md-6">
-                    
-                    <form action="uploadFile.php" id="uploadForm" name="frmupload" method="post" enctype="multipart/form-data">
-                        <input type="file" id="uploadImage" name="uploadImage">
-                        <input id="submitButton" type="submit" name='btnSubmit' value="Enviar Arquivo" />
-                    </form>
+                            <div class="row">
+                                
+                                <div class="col-md-8 bordaclass">
+                
+                                    <form action="layoutcadastro.php" method="post">
+                
+                                        <input type="text" name="titulo" id="titulolayout" class="form-control" placeholder="Titulo">
+                                        <input type="url" name="link" id="linklayout" class="form-control" placeholder="Link do Layout">
+                                        <br>
+                                        <button type="submit" class="btn btn-primary" onclick="return verificalayout()">Postar</button>
+                
+                                    </form>
+                
+                                </div>
+                
+                                <div class="col-md-4 bordaclass">
+                                    
+                                    <div id="outputImage"></div>
+                
+                                </div>
+                
+                            </div>
+                
+                            <div class="row uploadclass">
+                                
+                                <div class="col-md-6">
+                                    
+                                    <form action="uploadFile.php" id="uploadForm" name="frmupload" method="post" enctype="multipart/form-data">
+                                        <input type="file" id="uploadImage" name="uploadImage">
+                                        <input id="submitButton" type="submit" name="btnSubmit" value="Enviar Arquivo" />
+                                    </form>
+                
+                                </div>
+                
+                                <div class="col-md-6">
+                                    
+                                    <div class="progress col-sm-10" id="progressDivId">
+                                        <div class="progress-bar" id="progressBar"></div>
+                                        <div class="percent" id="percent">0%</div>
+                                    </div>
+                
+                                </div>
+                
+                            </div>
+                
+                        </div>';
+            }
 
-                </div>
-
-                <div class="col-md-6">
-                    
-                    <div class='progress col-sm-10' id="progressDivId">
-                        <div class='progress-bar' id='progressBar'></div>
-                        <div class='percent' id='percent'>0%</div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+        ?>
 
     </div>
 
